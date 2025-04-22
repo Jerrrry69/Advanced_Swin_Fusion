@@ -1,0 +1,4 @@
+Method,EN,SSIM,PSNR
+DenseFuse,7.5,0.85,32.1
+DIDFuse,7.8,0.88,33.5
+FusionGAN,7.2,0.82,31.8

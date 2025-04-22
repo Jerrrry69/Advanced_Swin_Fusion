@@ -1,0 +1,36 @@
+MODEL:
+  TYPE: swin
+  NAME: simmim_finetune
+  DROP_PATH_RATE: 0.1
+  SWIN:
+    EMBED_DIM: 128
+    DEPTHS: [ 2, 2, 6, 2 ]
+    NUM_HEADS: [ 6, 12, 24, 48 ]
+    WINDOW_SIZE: 14
+    MLP_RATIO: 4.
+    QKV_BIAS: True
+    QK_SCALE: None
+    APE: False
+    PATCH_NORM: True
+DATA:
+  IMG_SIZE: 224
+  DATA_PATH: dataset
+
+OUTPUT: fusion_results_ycbcr
+  
+
+TRAIN:
+  LOCAL_RANK: 0
+  EPOCHS: 150
+  WARMUP_EPOCHS: 30
+  BASE_LR: 1e-3
+  WARMUP_LR: 1e-7
+  MIN_LR: 1e-7
+  WEIGHT_DECAY: 0.1
+  LAYER_DECAY: 0.8
+  OPTIMIZER:
+    NAME: 'adamw'
+
+PRINT_FREQ: 100
+SAVE_FREQ: 5
+TAG: simmim_finetune__swinv2_base__img224_window14__800ep
